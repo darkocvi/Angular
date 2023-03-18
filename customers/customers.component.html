@@ -1,0 +1,68 @@
+<div class="dm-customers-table-wrapper grid-wrapper">
+  <kendo-grid
+    scrollable="virtual"
+    [data]="gridView"
+    [selectable]="selectableSettings"
+    [kendoGridSelectBy]="'id'"
+    [selectedKeys]="selectedCustomersIds"
+    [sortable]="sortSettings"
+    [sort]="sortValue"
+    [resizable]="true"
+    [skip]="skip"
+    [pageSize]="pageSize"
+    [rowHeight]="62"
+    [navigable]="true"
+    (pageChange)="pageChange($event)"
+    (sortChange)="sortChange($event)"
+    (edit)="editHandler($event)"
+    (remove)="removeHandler($event)"
+    (add)="addHandler($event)"
+    (selectedKeysChange)="onSelectedKeysChange($event)"
+  >
+    <ng-template kendoGridToolbarTemplate>
+      <div class="dm-customers-table-toolbar">
+        <div class="dm-customers-table-add-scan">
+          <button kendoGridAddCommand class="dm-add-new-customer-button">{{ 'Add new' | translate }}</button>
+          <button class="k-button" (click)="handleScanClick()">{{ 'Scan' | translate }}</button>
+        </div>
+        <div class="dm-customers-table-search-split">
+          <button class="k-button" [disabled]="selectedCustomersIds.length === 0" (click)="sendInformation()">
+            {{ 'Information' | translate }} {{ selectedCustomersIds?.length > 0 ? '(' + selectedCustomersIds?.length + ')' : '' }}
+          </button>
+          <button class="k-button" [disabled]="selectedCustomersIds.length === 0" (click)="sendAdvertisment()">
+            {{ 'Advertisement' | translate }} {{ selectedCustomersIds?.length > 0 ? '(' + selectedCustomersIds?.length + ')' : '' }}
+          </button>
+          <input data-cy="dm-customer-table-search" kendoTextBox [formControl]="filterTerm" />
+        </div>
+      </div>
+    </ng-template>
+    <kendo-grid-checkbox-column class="no-ellipsis" width="40">
+      <ng-template kendoGridHeaderTemplate>
+        <input
+          class="k-checkbox"
+          id="selectAllCheckboxId"
+          kendoGridSelectAllCheckbox
+          [state]="selectAllState"
+          (selectAllChange)="onSelectAllChange($event)"
+        />
+        <label class="k-checkbox-label" for="selectAllCheckboxId"></label>
+      </ng-template>
+    </kendo-grid-checkbox-column>
+    <kendo-grid-column [width]="130" field="firstname" [title]="'First name' | translate"> </kendo-grid-column>
+    <kendo-grid-column [width]="130" field="lastname" [title]="'Last name' | translate"> </kendo-grid-column>
+    <kendo-grid-column [class]="{ 'dm-customer-table-phone-col': true }" [width]="150" field="phone" [title]="'Phone' | translate">
+    </kendo-grid-column>
+    <kendo-grid-column [width]="200" field="email" [title]="'Email' | translate"> </kendo-grid-column>
+    <kendo-grid-column [width]="120" field="birthDate" [title]="'Birthday' | translate" [format]="default_date_format"> </kendo-grid-column>
+    <kendo-grid-column [width]="120" field="lastUse" [title]="'Last use' | translate" [format]="default_date_format"> </kendo-grid-column>
+    <kendo-grid-column [class]="{ 'dm-customer-table-actions-col': true }">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="dm-customers-table-actions">
+          <button class="dm-edit-customer" kendoGridEditCommand [primary]="true">{{ 'Edit' | translate }}</button>
+          <button class="dm-remove-customer" kendoGridRemoveCommand>{{ 'Remove' | translate }}</button>
+        </div>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+  <div *ngIf="(customersDataLoading$ | async) || gridBusy === true" class="k-i-loading"></div>
+</div>

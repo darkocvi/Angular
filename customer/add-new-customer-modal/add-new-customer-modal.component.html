@@ -1,0 +1,44 @@
+<form class="k-form dm-add-new-customer-form" [formGroup]="addNewCustomerForm" (ngSubmit)="submit()">
+  <fieldset>
+    <label class="k-form-field">
+      <span>{{ 'First name' | translate }}<i class="dm-require-sign"></i></span>
+      <input class="k-textbox" [placeholder]="'First name' | translate" formControlName="firstname" />
+    </label>
+    <label class="k-form-field">
+      <span>{{ 'Last name' | translate }}<i class="dm-require-sign"></i></span>
+      <input class="k-textbox" [placeholder]="'Last name' | translate" formControlName="lastname" />
+    </label>
+    <label class="k-form-field">
+      <span>{{ 'Gender' | translate }}</span>
+      <kendo-dropdownlist formControlName="gender" [data]="genders" [textField]="'title'" [valueField]="'value'" [valuePrimitive]="true">
+      </kendo-dropdownlist>
+    </label>
+    <label class="k-form-field">
+      <span>{{ 'Phone' | translate }}<i class="dm-require-sign"></i></span>
+      <input class="k-textbox" [placeholder]="'Phone' | translate" formControlName="phone" />
+    </label>
+    <label class="k-form-field">
+      <span>{{ 'Address' | translate }}</span>
+      <input class="k-textbox" [placeholder]="'Address' | translate" formControlName="address" />
+    </label>
+    <label class="k-form-field">
+      <span>{{ 'Email' | translate }}</span>
+      <input class="k-textbox" [placeholder]="'Email' | translate" formControlName="email" />
+    </label>
+    <label class="k-form-field">
+      <span>{{ 'Birthday' | translate }}</span>
+      <kendo-datepicker
+        [format]="default_date_format"
+        formControlName="birthDate"
+        [placeholder]="'Birthday' | translate"
+      ></kendo-datepicker>
+    </label>
+  </fieldset>
+
+  <div class="dm-add-new-customer-modal-actions">
+    <button type="button" class="k-button" (click)="close()">{{ 'Cancel' | translate }}</button>
+    <button type="button" [disabled]="!addNewCustomerForm.valid" class="k-button k-primary" type="submit">
+      {{ 'Submit' | translate }}
+    </button>
+  </div>
+</form>

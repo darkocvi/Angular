@@ -1,0 +1,37 @@
+<form class="k-form dm-customers-notifications-form" [formGroup]="customersNotificationForm" (ngSubmit)="submit()">
+  <fieldset>
+    <label class="k-form-field">
+      <span>{{ 'Title' | translate }}<i class="dm-require-sign"></i></span>
+      <input data-cy="dm-notification-title-input" class="k-textbox" [placeholder]="'Title' | translate" formControlName="title" />
+    </label>
+  </fieldset>
+
+  <div class="row">
+    <label class="k-form-field col-md-6">
+      <span>{{ 'Message' | translate }}<i class="dm-require-sign"></i></span>
+      <textarea
+        data-cy="dm-notification-message-input"
+        class="k-textarea text-area"
+        [placeholder]="'Message' | translate"
+        formControlName="message"
+      ></textarea>
+    </label>
+    <label class="k-form-field col-md-6">
+      <span>{{ 'Preview' | translate }}</span>
+      <div class="markdown-renderer">
+        <markdown emoji [data]="message"></markdown>
+      </div>
+    </label>
+  </div>
+
+  <p class="dm-customers-notification-caption col-md-12">
+    {{ 'Use Information messages only for critical information otherwise advertisement messages' | translate }}
+  </p>
+
+  <div class="dm-customers-notifications-modal-actions col-md-12">
+    <button type="button" class="k-button" (click)="close()">{{ 'Cancel' | translate }}</button>
+    <button data-cy="dm-notification-send-btn" class="k-button k-primary" [disabled]="!customersNotificationForm.valid" type="submit">
+      {{ 'Send' | translate }}
+    </button>
+  </div>
+</form>

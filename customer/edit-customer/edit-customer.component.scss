@@ -1,0 +1,33 @@
+.dm-customer-edit-page-wrapper {
+  margin: 0;
+}
+
+.dm-edit-customer-form {
+  fieldset {
+    border: none;
+    margin-bottom: 20px;
+  }
+
+  .dm-edit-customer-form-actions {
+    text-align: right;
+  }
+}
+
+.dm-edit-customer-page-points {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.dm-edit-customer-page-actions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+
+  button {
+    margin-bottom: 15px;
+  }
+}
+
+.dm-glass-passport {
+  width: 100%;
+}

@@ -1,0 +1,17 @@
+<form class="k-form dm-redeem-customer-points-form" [formGroup]="redeemCustomerPointsForm" (ngSubmit)="submit()">
+  <fieldset>
+    <label class="k-form-field">
+      <span>{{ 'Points' | translate }}</span>
+      <kendo-numerictextbox
+        [format]="numberc_two_dots_format"
+        [placeholder]="'Points' | translate"
+        formControlName="points"
+      ></kendo-numerictextbox>
+    </label>
+  </fieldset>
+
+  <div class="dm-redeem-customer-points-modal-actions">
+    <button type="button" class="k-button" (click)="close()">{{ 'Cancel' | translate }}</button>
+    <button type="button" class="k-button k-primary" type="submit">{{ 'Submit' | translate }}</button>
+  </div>
+</form>

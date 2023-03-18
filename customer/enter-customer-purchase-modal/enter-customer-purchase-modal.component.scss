@@ -1,0 +1,14 @@
+.dm-enter-customer-purchase-form.k-form {
+  fieldset {
+    border: none;
+  }
+
+  .dm-enter-customer-purchase-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    .k-button {
+      margin: 0 5px;
+    }
+  }
+}

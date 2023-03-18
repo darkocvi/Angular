@@ -1,0 +1,50 @@
+@import '../../theme/variables';
+
+.dm-customers-table-wrapper {
+  height: 100%;
+
+  .k-widget.k-grid {
+    height: 100%;
+  }
+
+  .k-i-loading {
+    position: absolute;
+  }
+}
+
+.dm-customers-table-actions {
+  .dm-edit-customer {
+    margin-right: 10px;
+  }
+}
+
+.dm-customers-table-toolbar {
+  display: flex;
+  justify-content: space-between;
+
+  .dm-customers-table-add-scan {
+    button {
+      margin-right: 15px;
+
+      &.dm-add-new-customer-button {
+        background-color: $add-button-color;
+      }
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .dm-customers-table-search-split {
+    display: flex;
+
+    .k-button {
+      margin: 0 10px;
+    }
+
+    .k-textbox {
+      margin: 0 5px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@import '~@progress/kendo-theme-bootstrap/scss/variables';
+
+.dm-customers-notifications-form.k-form {
+  fieldset {
+    border: none;
+    margin-bottom: 40px;
+  }
+
+  .k-form-field {
+    .k-textarea {
+      width: 100%;
+    }
+  }
+
+  .dm-customers-notification-caption {
+    font-style: italic;
+  }
+
+  .dm-customers-notifications-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    .k-button {
+      margin: 0 5px;
+    }
+  }
+
+  .markdown-renderer {
+    border: 1px solid $hovered-bg;
+    padding: 1em;
+    overflow: auto;
+    height: 15em;
+  }
+
+  .text-area {
+    min-height: 15em;
+    resize: none;
+  }
+}

@@ -1,0 +1,14 @@
+.dm-redeem-customer-points-form.k-form {
+  fieldset {
+    border: none;
+  }
+
+  .dm-redeem-customer-points-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    .k-button {
+      margin: 0 5px;
+    }
+  }
+}

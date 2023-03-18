@@ -1,0 +1,16 @@
+.dm-add-new-customer-form.k-form {
+  width: 500px;
+
+  fieldset {
+    border: none;
+  }
+
+  .dm-add-new-customer-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    .k-button {
+      margin: 0 5px;
+    }
+  }
+}

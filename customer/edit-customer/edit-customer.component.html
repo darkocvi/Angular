@@ -1,0 +1,72 @@
+<kendo-tabstrip>
+  <kendo-tabstrip-tab [title]="'User profile' | translate" [selected]="true">
+    <ng-template kendoTabContent>
+      <div class="row dm-customer-edit-page-wrapper">
+        <form class="k-form dm-edit-customer-form col-md-4" [formGroup]="editCustomerForm" (ngSubmit)="submit()">
+          <fieldset>
+            <label class="k-form-field">
+              <span>{{ 'First name' | translate }}<i class="dm-require-sign"></i></span>
+              <input class="k-textbox" [placeholder]="'First name' | translate" formControlName="firstname" />
+            </label>
+            <label class="k-form-field">
+              <span>{{ 'Last name' | translate }}<i class="dm-require-sign"></i></span>
+              <input class="k-textbox" [placeholder]="'Last name' | translate" formControlName="lastname" />
+            </label>
+            <label class="k-form-field">
+              <span>{{ 'Gender' | translate }}</span>
+              <kendo-dropdownlist formControlName="gender" [data]="genders" [textField]="'title'" [valueField]="'value'" [valuePrimitive]="true">
+              </kendo-dropdownlist>
+            </label>
+            <label class="k-form-field">
+              <span>{{ 'Phone' | translate }}<i class="dm-require-sign"></i></span>
+              <input class="k-textbox" [placeholder]="'Phone' | translate" formControlName="phone" />
+            </label>
+            <label class="k-form-field">
+              <span>{{ 'Address' | translate }}</span>
+              <input class="k-textbox" [placeholder]="'Address' | translate" formControlName="address" />
+            </label>
+            <label class="k-form-field">
+              <span>{{ 'Email' | translate }}</span>
+              <input class="k-textbox" [placeholder]="'Email' | translate" formControlName="email" />
+            </label>
+            <label class="k-form-field">
+              <span>{{ 'Birthday' | translate }}</span>
+              <kendo-datepicker
+                [format]="default_date_format"
+                formControlName="birthDate"
+                [placeholder]="'Birthday' | translate"
+              ></kendo-datepicker>
+            </label>
+          </fieldset>
+
+          <div class="dm-edit-customer-form-actions">
+            <button [disabled]="!editCustomerForm.valid" class="k-button k-primary" type="submit">
+              {{ 'Submit' | translate }}
+            </button>
+          </div>
+        </form>
+        <div class="col-md-4 dm-edit-customer-page-points">
+          <h3>{{ points }} {{ 'Points' | translate }}</h3>
+        </div>
+        <div class="col-md-4 col-lg-3 dm-edit-customer-page-actions">
+          <button type="button" class="k-button" (click)="enterPurchase()">{{ 'Enter purchase' | translate }}</button>
+          <button type="button" class="k-button" (click)="redeemPoints()">{{ 'Redeem points' | translate }}</button>
+          <button type="button" class="k-button" (click)="sendAdvertisement()">{{ 'Advertisement' | translate }}</button>
+          <button data-cy="dm-send-information-btn" type="button" class="k-button" (click)="sendInformation()">
+            {{ 'Information' | translate }}
+          </button>
+        </div>
+        </div>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab [title]="'Glasses passport' | translate">
+    <ng-template kendoTabContent>
+      <app-customer-glasses-passport
+      class="dm-glass-passport"
+      *ngIf="editCustomer"
+      [customerId]="editCustomer.id"
+    ></app-customer-glasses-passport>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
